@@ -17,13 +17,13 @@ window.onload=function() {
 	let mirror = 'arxiv.yezhisheng.me';
 	var ele = $(".full-text ul li a")[0];
 	ele.href = ele.href.replace(/arxiv.org/g, mirror)+'.pdf';
-	
+
 	GM_registerMenuCommand('Copy link', function() {
 		const html = '<a href=\"' + window.location.href +'\">' + document.title.slice(document.title.indexOf(']') + 2) + '</a>'
 		GM_setClipboard(html);
 	}, 'r');
     GM_registerMenuCommand('Copy markdown link', function() {
-		const markdown = '[' + document.title.slice(document.title.indexOf(']') + 2) + '](' + window.location.href + ')';
+	const markdown = '[' + document.title.slice(document.title.indexOf(']') + 2) + '](' + window.location.href + ')';
 		GM_setClipboard(markdown);
 	}, 'r');
 
@@ -39,4 +39,26 @@ window.onload=function() {
     let authors = document.querySelector('.authors');
     triple.className = "authors";
     authors.parentElement.insertBefore(triple,authors);
+	
+	function selectElement(element) {
+        if (window.getSelection) {
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            var range = document.createRange();
+            range.selectNodeContents(element);
+            sel.addRange(range);
+        } else if (document.selection) {
+            var textRange = document.body.createTextRange();
+            textRange.moveToElementText(element);
+            textRange.select();
+        }
+    }
+    function clearSelection() {
+        if (window.getSelection) {
+            window.getSelection().removeAllRanges();
+        } else if (document.selection) {
+            document.selection.empty();
+        }
+    }
+    selectElement(triple);
 }
