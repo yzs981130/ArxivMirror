@@ -22,43 +22,43 @@ window.onload=function() {
 		const html = '<a href=\"' + window.location.href +'\">' + document.title.slice(document.title.indexOf(']') + 2) + '</a>'
 		GM_setClipboard(html);
 	}, 'r');
-    GM_registerMenuCommand('Copy markdown link', function() {
+	GM_registerMenuCommand('Copy markdown link', function() {
 	const markdown = '[' + document.title.slice(document.title.indexOf(']') + 2) + '](' + window.location.href + ')';
 		GM_setClipboard(markdown);
 	}, 'r');
 
-    let h0 = document.querySelector('#abs-outer > div.extra-services > div.full-text > ul');
-    let h1 = document.querySelector('#abs-outer > div.extra-services > div.full-text > ul > li:nth-child(1)');
-    let h2 = h1.cloneNode(h1);
-    h2.children[0].text = document.title.slice(document.title.indexOf(']') + 2);
-    h2.children[0].href = window.location.href;
-    h0.insertBefore(h2, h0.children[0]);
+	let h0 = document.querySelector('#abs-outer > div.extra-services > div.full-text > ul');
+	let h1 = document.querySelector('#abs-outer > div.extra-services > div.full-text > ul > li:nth-child(1)');
+	let h2 = h1.cloneNode(h1);
+	h2.children[0].text = document.title.slice(document.title.indexOf(']') + 2);
+	h2.children[0].href = window.location.href;
+	h0.insertBefore(h2, h0.children[0]);
 
-    let triple = document.createElement("div");
-    triple.innerHTML = '<a href=\"' + window.location.href +'\">' + document.title.slice(document.title.indexOf(']') + 2) + '</a>'
-    let authors = document.querySelector('.authors');
-    triple.className = "authors";
-    authors.parentElement.insertBefore(triple,authors);
+	let triple = document.createElement("div");
+	triple.innerHTML = '<a href=\"' + window.location.href +'\">' + document.title.slice(document.title.indexOf(']') + 2) + '</a>'
+	let authors = document.querySelector('.authors');
+	triple.className = "authors";
+	authors.parentElement.insertBefore(triple,authors);
 	
 	function selectElement(element) {
-        if (window.getSelection) {
-            var sel = window.getSelection();
-            sel.removeAllRanges();
-            var range = document.createRange();
-            range.selectNodeContents(element);
-            sel.addRange(range);
-        } else if (document.selection) {
-            var textRange = document.body.createTextRange();
-            textRange.moveToElementText(element);
-            textRange.select();
-        }
-    }
-    function clearSelection() {
-        if (window.getSelection) {
-            window.getSelection().removeAllRanges();
-        } else if (document.selection) {
-            document.selection.empty();
-        }
-    }
-    selectElement(triple);
+		if (window.getSelection) {
+			var sel = window.getSelection();
+			sel.removeAllRanges();
+			var range = document.createRange();
+			range.selectNodeContents(element);
+			sel.addRange(range);
+		} else if (document.selection) {
+			var textRange = document.body.createTextRange();
+			textRange.moveToElementText(element);
+			textRange.select();
+		}
+	}
+	function clearSelection() {
+		if (window.getSelection) {
+			window.getSelection().removeAllRanges();
+		} else if (document.selection) {
+			document.selection.empty();
+		}
+	}
+	selectElement(triple);
 }
