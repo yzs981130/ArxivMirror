@@ -19,7 +19,8 @@ window.onload=function() {
 	ele.href = ele.href.replace(/arxiv.org/g, mirror)+'.pdf';
 	
 	GM_registerMenuCommand('Copy link', function() {
-		const markdown = '[' + document.title + '](' + window.location.href + ')';
-		GM_setClipboard(markdown);
+		// const markdown = '[' + document.title + '](' + window.location.href + ')';
+		const html = '<a href=\"' + window.location.href +'\">' + document.title + '</a>'
+		GM_setClipboard(html);
 	}, 'r');
 }
