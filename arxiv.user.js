@@ -27,12 +27,12 @@ window.onload=function() {
 		GM_setClipboard(markdown);
 	}, 'r');
 
-	let h0 = document.querySelector('#abs-outer > div.extra-services > div.full-text > ul');
-	let h1 = document.querySelector('#abs-outer > div.extra-services > div.full-text > ul > li:nth-child(1)');
-	let h2 = h1.cloneNode(h1);
-	h2.children[0].text = document.title.slice(document.title.indexOf(']') + 2);
-	h2.children[0].href = window.location.href;
-	h0.insertBefore(h2, h0.children[0]);
+// 	let h0 = document.querySelector('#abs-outer > div.extra-services > div.full-text > ul');
+// 	let h1 = document.querySelector('#abs-outer > div.extra-services > div.full-text > ul > li:nth-child(1)');
+// 	let h2 = h1.cloneNode(h1);
+// 	h2.children[0].text = document.title.slice(document.title.indexOf(']') + 2);
+// 	h2.children[0].href = window.location.href;
+// 	h0.insertBefore(h2, h0.children[0]);
 
 	let triple = document.createElement("div");
 	triple.innerHTML = '<a href=\"' + window.location.href +'\">' + document.title.slice(document.title.indexOf(']') + 2) + '</a>'
