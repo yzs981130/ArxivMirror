@@ -2,7 +2,7 @@
 // @name         ArxivMirror
 // @namespace    https://github.com/yzs981130/ArxivMirror
 // @homepage     https://github.com/yzs981130/ArxivMirror
-// @version      0.1
+// @version      0.2
 // @author       yzs981130
 // @description  Arxiv mirror for personal use
 // @include      https://arxiv.org/abs/*
@@ -16,7 +16,7 @@ window.onload=function() {
 	'use strict';
 	let mirror = 'arxiv.yezhisheng.me';
 	var ele = $(".full-text ul li a")[0];
-	ele.href = ele.href.replace(/arxiv.org/g, mirror)+'.pdf';
+	ele.href = ele.href.replace(/arxiv.org/g, mirror);
 
 	GM_registerMenuCommand('Copy link', function() {
 		const html = '<a href=\"' + window.location.href +'\">' + document.title.slice(document.title.indexOf(']') + 2) + '</a>'
